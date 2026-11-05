@@ -53,7 +53,27 @@ function kartOlustur(ders) {
   kart.querySelector(".gelmedigim").textContent =
     `Gelmediğim: ${ders.gelmedigim} / ${ders.hak}`;
 
+  const eksi = kart.querySelector(".eksi");
+  const arti = kart.querySelector(".arti");
+  eksi.setAttribute("aria-label", `${ders.ad}: gelmediğim haftayı bir azalt`);
+  arti.setAttribute("aria-label", `${ders.ad}: gelmediğim haftayı bir artır`);
+  eksi.disabled = ders.gelmedigim === 0; // 0'ın altına inemez
+  eksi.addEventListener("click", () => haftaDegistir(ders, -1, ".eksi"));
+  arti.addEventListener("click", () => haftaDegistir(ders, 1, ".arti"));
+
   return kart;
+}
+
+// Gelmediğim hafta sayısını değiştirir.
+function haftaDegistir(ders, fark, butonSinifi) {
+  ders.gelmedigim = Math.max(ders.gelmedigim + fark, 0);
+  guncelle();
+
+  // Kartlar yeniden çizildi, klavye odağını aynı butona geri veriyoruz.
+  // Eksi butonu pasif olduysa odak artı butonuna geçer.
+  const kart = liste.querySelector(`[data-id="${ders.id}"]`);
+  const buton = kart.querySelector(butonSinifi);
+  (buton.disabled ? kart.querySelector(".arti") : buton).focus();
 }
 
 // Ders listesini baştan çizer.
