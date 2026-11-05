@@ -214,8 +214,7 @@ h2 {
   cursor: pointer;
 }
 
-.kucuk-buton:hover:enabled { background: #F7F6F3; }
-.kucuk-buton:disabled { color: #BDBDBA; cursor: not-allowed; }
+.kucuk-buton:hover { background: #F7F6F3; }
 
 .sil-buton {
   min-height: 44px;
