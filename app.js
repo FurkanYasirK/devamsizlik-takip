@@ -72,7 +72,19 @@ function kartOlustur(ders) {
   eksi.addEventListener("click", () => haftaDegistir(ders, -1, ".eksi"));
   arti.addEventListener("click", () => haftaDegistir(ders, 1, ".arti"));
 
+  const sil = kart.querySelector(".sil-buton");
+  sil.setAttribute("aria-label", `${ders.ad} dersini sil`);
+  sil.addEventListener("click", () => dersiSil(ders));
+
   return kart;
+}
+
+// Yanlışlıkla silmeyi önlemek için önce onay ister.
+function dersiSil(ders) {
+  if (!confirm(`"${ders.ad}" dersi silinsin mi?`)) return;
+
+  dersler = dersler.filter((d) => d.id !== ders.id);
+  guncelle();
 }
 
 // Gelmediğim hafta sayısını değiştirir.
