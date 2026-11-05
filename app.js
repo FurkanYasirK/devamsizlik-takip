@@ -8,9 +8,36 @@ const liste = document.getElementById("ders-listesi");
 const bosMesaj = document.getElementById("bos-mesaj");
 const kartSablonu = document.getElementById("ders-karti");
 
+// localStorage'da verilerin saklandığı anahtar.
+const DEPO_ANAHTARI = "devamsizlik-dersler";
+
 // Her ders şu alanlara sahip bir nesne: { id, ad, hak, gelmedigim }
 // C#'taki List<Ders> gibi düşünülebilir.
-let dersler = [];
+let dersler = dersleriYukle();
+
+// localStorage sadece metin saklar, bu yüzden listeyi JSON metnine çeviriyoruz.
+function dersleriYukle() {
+  try {
+    const kayit = JSON.parse(localStorage.getItem(DEPO_ANAHTARI));
+    return Array.isArray(kayit) ? kayit : [];
+  } catch {
+    return []; // Kayıt bozuksa veya okunamıyorsa boş listeyle başla
+  }
+}
+
+function dersleriKaydet() {
+  try {
+    localStorage.setItem(DEPO_ANAHTARI, JSON.stringify(dersler));
+  } catch {
+    console.warn("Veriler kaydedilemedi, sayfa yenilenince kaybolur.");
+  }
+}
+
+// Her değişiklikten sonra önce kaydeder, sonra ekranı günceller.
+function guncelle() {
+  dersleriKaydet();
+  listeyiCiz();
+}
 
 // Tek bir ders için kart oluşturur.
 // Metinleri textContent ile yazıyoruz, böylece ders adı HTML olarak çalışmaz.
@@ -46,7 +73,7 @@ form.addEventListener("submit", function (olay) {
     gelmedigim: 0,
   });
 
-  listeyiCiz();
+  guncelle();
   form.reset(); // Hak kutusu tekrar varsayılan 4 olur
   adKutusu.focus();
 });
