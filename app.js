@@ -39,14 +39,25 @@ function guncelle() {
   listeyiCiz();
 }
 
+// Kalan hakka göre kartın rengini ve durum yazısını belirler.
+function durumBul(kalan) {
+  if (kalan >= 2) return { sinif: "yesil", yazi: "Güvende" };
+  if (kalan === 1) return { sinif: "sari", yazi: "Son hak" };
+  if (kalan === 0) return { sinif: "kirmizi", yazi: "Hak bitti" };
+  return { sinif: "kirmizi", yazi: "Sınır aşıldı" };
+}
+
 // Tek bir ders için kart oluşturur.
 // Metinleri textContent ile yazıyoruz, böylece ders adı HTML olarak çalışmaz.
 function kartOlustur(ders) {
   const kart = kartSablonu.content.firstElementChild.cloneNode(true);
   const kalan = ders.hak - ders.gelmedigim;
+  const durum = durumBul(kalan);
 
   kart.dataset.id = ders.id;
+  kart.classList.add(durum.sinif);
   kart.querySelector(".ders-adi").textContent = ders.ad;
+  kart.querySelector(".durum").textContent = durum.yazi;
   kart.querySelector(".kalan-sayi").textContent = Math.max(kalan, 0);
   kart.querySelector(".kalan-yazi").textContent =
     kalan < 0 ? `sınır ${-kalan} hafta aşıldı` : "hafta hakkın kaldı";

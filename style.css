@@ -142,6 +142,34 @@ h2 {
   overflow-wrap: anywhere;
 }
 
+/* Durum etiketi: rengi karta eklenen yesil/sari/kirmizi sınıfından gelir */
+.durum {
+  flex-shrink: 0;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  background: var(--durum-zemin);
+  color: var(--durum-yazi);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.yesil {
+  --durum-zemin: var(--yesil-zemin);
+  --durum-yazi: var(--yesil-yazi);
+}
+
+.sari {
+  --durum-zemin: var(--sari-zemin);
+  --durum-yazi: var(--sari-yazi);
+}
+
+.kirmizi {
+  --durum-zemin: var(--kirmizi-zemin);
+  --durum-yazi: var(--kirmizi-yazi);
+}
+
 .kalan {
   display: flex;
   align-items: baseline;
@@ -150,7 +178,7 @@ h2 {
 }
 
 .kalan-sayi {
-  color: var(--koyu);
+  color: var(--durum-yazi);
   font-family: var(--baslik-font);
   font-size: 3rem;
   font-weight: 500;
