@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devamsızlık Takip</title>
+  <meta name="description" content="Üniversite derslerinde kalan devamsızlık hakkını gösteren basit web uygulaması.">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="sayfa">
+    <header class="ust">
+      <h1>Devamsızlık Takip</h1>
+      <p>Her ders için kaç hafta hakkın kaldığını gör, sınırı aşmadan önce fark et.</p>
+    </header>
+
+    <!-- Yeni ders ekleme formu -->
+    <form id="ders-formu" class="form">
+      <div class="alan">
+        <label for="ders-adi">Ders adı</label>
+        <input id="ders-adi" type="text" maxlength="60" required pattern=".*\S.*"
+               placeholder="Örn. Web Programlama" autocomplete="off">
+      </div>
+      <div class="alan alan-hak">
+        <label for="ders-hakki">Hak (hafta)</label>
+        <input id="ders-hakki" type="number" min="1" max="14" value="4" required>
+      </div>
+      <button class="ana-buton" type="submit">Ders ekle</button>
+    </form>
+
+    <!-- Ders kartları buraya JavaScript ile eklenir -->
+    <section aria-labelledby="dersler-baslik">
+      <h2 id="dersler-baslik">Derslerim</h2>
+      <p id="bos-mesaj" class="bos-mesaj">Henüz ders eklemedin. Yukarıdan ilk dersini ekleyerek başla.</p>
+      <ul id="ders-listesi" class="ders-listesi"></ul>
+    </section>
+
+    <footer class="alt">
+      <p>Varsayılan hak 4 haftadır: %70 devam zorunluluğu olan 14 haftalık derste 14 × 0,30 = 4,2, yani 4 hafta gelmeme hakkın var. Okulunun kuralı farklıysa hakkı ona göre gir.</p>
+      <p>Veriler yalnızca bu tarayıcıda saklanır, başka cihazda görünmez.</p>
+    </footer>
+  </main>
+
+  <!-- Tek bir ders kartının kalıbı. JavaScript her ders için bunu kopyalar. -->
+  <template id="ders-karti">
+    <li class="kart">
+      <div class="kart-ust">
+        <h3 class="ders-adi"></h3>
+        <span class="durum"></span>
+      </div>
+      <p class="kalan">
+        <span class="kalan-sayi"></span>
+        <span class="kalan-yazi"></span>
+      </p>
+      <div class="kart-alt">
+        <div class="sayac">
+          <button class="kucuk-buton eksi" type="button">−</button>
+          <span class="gelmedigim"></span>
+          <button class="kucuk-buton arti" type="button">+</button>
+        </div>
+        <button class="sil-buton" type="button">Sil</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

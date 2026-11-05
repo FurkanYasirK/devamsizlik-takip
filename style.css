@@ -1,0 +1,240 @@
+/* Renkler ve fontlar tek yerde dursun diye değişken olarak tanımlandı.
+   Renk sadece ders durumunu göstermek için kullanılıyor. */
+:root {
+  --zemin: #FBFBFA;
+  --yuzey: #FFFFFF;
+  --cizgi: #EAEAEA;
+  --metin: #2F3437;
+  --ikincil: #6F6E6A;
+  --koyu: #111111;
+
+  --yesil-zemin: #EDF3EC;
+  --yesil-yazi: #346538;
+  --sari-zemin: #FBF3DB;
+  --sari-yazi: #956400;
+  --kirmizi-zemin: #FDEBEC;
+  --kirmizi-yazi: #9F2F2D;
+
+  --govde-font: "Geist", "Helvetica Neue", "Segoe UI", sans-serif;
+  --baslik-font: "Newsreader", Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--zemin);
+  color: var(--metin);
+  font-family: var(--govde-font);
+  line-height: 1.6;
+}
+
+.sayfa {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px 16px 48px;
+}
+
+/* Üst başlık */
+h1 {
+  margin: 0 0 8px;
+  color: var(--koyu);
+  font-family: var(--baslik-font);
+  font-size: clamp(2.5rem, 8vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.ust p {
+  margin: 0;
+  color: var(--ikincil);
+  font-size: 1.05rem;
+}
+
+/* Ders ekleme formu */
+.form {
+  display: grid;
+  grid-template-columns: 1fr 120px auto;
+  gap: 12px;
+  align-items: end;
+  margin: 40px 0 56px;
+}
+
+.alan label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #D5D5D2;
+  border-radius: 6px;
+  background: var(--yuzey);
+  color: var(--metin);
+  font: inherit;
+}
+
+.ana-buton {
+  height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--koyu);
+  color: #FFFFFF;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.ana-buton:hover { background: #333333; }
+
+/* Ders listesi */
+h2 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bos-mesaj {
+  margin: 0;
+  padding: 32px 24px;
+  border: 1px dashed #D5D5D2;
+  border-radius: 8px;
+  color: var(--ikincil);
+  text-align: center;
+}
+
+.bos-mesaj[hidden] { display: none; }
+
+.ders-listesi {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Ders kartı */
+.kart {
+  padding: 20px 24px;
+  border: 1px solid var(--cizgi);
+  border-radius: 8px;
+  background: var(--yuzey);
+}
+
+.kart-ust {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ders-adi {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.kalan {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+.kalan-sayi {
+  color: var(--koyu);
+  font-family: var(--baslik-font);
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.kalan-yazi {
+  color: var(--ikincil);
+  font-size: 0.875rem;
+}
+
+.kart-alt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--cizgi);
+}
+
+.sayac {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gelmedigim {
+  min-width: 112px;
+  color: var(--ikincil);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.kucuk-buton {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--cizgi);
+  border-radius: 6px;
+  background: var(--yuzey);
+  color: var(--koyu);
+  font: inherit;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.kucuk-buton:hover:enabled { background: #F7F6F3; }
+.kucuk-buton:disabled { color: #BDBDBA; cursor: not-allowed; }
+
+.sil-buton {
+  min-height: 44px;
+  padding: 0 8px;
+  border: 0;
+  background: none;
+  color: var(--ikincil);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.sil-buton:hover { color: var(--kirmizi-yazi); }
+
+button:active { transform: scale(0.98); }
+
+/* Klavye ile gezenler için görünür odak çizgisi */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--koyu);
+  outline-offset: 2px;
+}
+
+/* Alt bilgi */
+.alt {
+  margin-top: 56px;
+  padding-top: 16px;
+  border-top: 1px solid var(--cizgi);
+  color: var(--ikincil);
+  font-size: 0.875rem;
+}
+
+.alt p { margin: 0 0 8px; }
+
+/* Telefonda form alt alta dizilir */
+@media (max-width: 560px) {
+  .sayfa { padding-top: 48px; }
+  .form { grid-template-columns: 1fr 1fr; }
+  .form .alan:first-child { grid-column: 1 / -1; }
+}
