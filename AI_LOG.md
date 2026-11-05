@@ -41,7 +41,7 @@
 
 **AI Önerisi:** Bu dosyadaki kararlara uyarak uygulamanın tamamını (HTML, CSS, JavaScript) AI yazdı. Her MVP özelliğini ayrı commit yaptı, her özellik için issue açtı, MVP sonrası fikirleri de açık issue olarak bıraktı. Uygulamayı tarayıcıda test etti: ders ekleme, + / −, renkli durum, sayfa yenileyince verinin kalması, silme ve telefon görünümü.
 
-**Benim Eylemim:** (doldurulacak: kodu okuyup anladım mı, neyi denedim, neyi değiştirdim?)
+**Benim Eylemim:** Siteyi kendim denedim. HTML ve CSS'te anlamadığım yer yoktu ama app.js'yi anlamakta zorlandım, bu yüzden AI'dan daha düşük seviyede ve farklı bir şekilde yazmasını istedim. AI app.js'yi for döngüsü, if-else ve düz fonksiyonlarla yeniden yazdı, kart HTML'ini de index.html'den app.js'ye taşıdı.
 
 **Ne Öğrendim:** (doldurulacak)
 

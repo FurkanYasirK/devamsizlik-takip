@@ -19,7 +19,7 @@
     </header>
 
     <!-- Yeni ders ekleme formu -->
-    <form id="ders-formu" class="form">
+    <form id="ders-formu" class="form" onsubmit="dersEkle(event)">
       <div class="alan">
         <label for="ders-adi">Ders adı</label>
         <input id="ders-adi" type="text" maxlength="60" required pattern=".*\S.*"
@@ -44,28 +44,6 @@
       <p>Veriler yalnızca bu tarayıcıda saklanır, başka cihazda görünmez.</p>
     </footer>
   </main>
-
-  <!-- Tek bir ders kartının kalıbı. JavaScript her ders için bunu kopyalar. -->
-  <template id="ders-karti">
-    <li class="kart">
-      <div class="kart-ust">
-        <h3 class="ders-adi"></h3>
-        <span class="durum"></span>
-      </div>
-      <p class="kalan">
-        <span class="kalan-sayi"></span>
-        <span class="kalan-yazi"></span>
-      </p>
-      <div class="kart-alt">
-        <div class="sayac">
-          <button class="kucuk-buton eksi" type="button">−</button>
-          <span class="gelmedigim"></span>
-          <button class="kucuk-buton arti" type="button">+</button>
-        </div>
-        <button class="sil-buton" type="button">Sil</button>
-      </div>
-    </li>
-  </template>
 
   <script src="app.js" defer></script>
 </body>
