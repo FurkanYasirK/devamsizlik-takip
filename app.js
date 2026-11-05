@@ -13,9 +13,6 @@ function dersleriYukle() {
     if (kayit !== null) {
       dersler = JSON.parse(kayit); // Metni tekrar listeye çevirir
     }
-    if (!Array.isArray(dersler)) {
-      dersler = [];
-    }
   } catch (hata) {
     dersler = []; // Kayıt bozuksa boş listeyle başla
   }
@@ -24,8 +21,7 @@ function dersleriYukle() {
 // Listeyi tarayıcıya yazar. localStorage sadece metin sakladığı için
 // listeyi önce JSON metnine çeviriyoruz.
 function dersleriKaydet() {
-  const metin = JSON.stringify(dersler);
-  localStorage.setItem("devamsizlik-dersler", metin);
+  localStorage.setItem("devamsizlik-dersler", JSON.stringify(dersler));
 }
 
 // Formdaki "Ders ekle" butonuna basılınca çalışır.
@@ -56,19 +52,16 @@ function artir(i) {
   listeyiGoster();
 }
 
-// − butonu. 0'ın altına inmez.
+// − butonu. Gelmediğim hafta 0 iken buton pasif olduğu için 0'ın altına inemez.
 function azalt(i) {
-  if (dersler[i].gelmedigim > 0) {
-    dersler[i].gelmedigim = dersler[i].gelmedigim - 1;
-  }
+  dersler[i].gelmedigim = dersler[i].gelmedigim - 1;
   dersleriKaydet();
   listeyiGoster();
 }
 
 // Sil butonu. Önce kullanıcıya sorar.
 function sil(i) {
-  const onay = confirm(dersler[i].ad + " dersi silinsin mi?");
-  if (onay) {
+  if (confirm(dersler[i].ad + " dersi silinsin mi?")) {
     dersler.splice(i, 1); // C#'taki List.RemoveAt(i) ile aynı
     dersleriKaydet();
     listeyiGoster();
@@ -124,11 +117,11 @@ function kartOlustur(i) {
     </p>
     <div class="kart-alt">
       <div class="sayac">
-        <button class="kucuk-buton" type="button" onclick="azalt(${i})" aria-label="Bir hafta azalt" ${eksiPasif}>−</button>
+        <button class="kucuk-buton" onclick="azalt(${i})" aria-label="Bir hafta azalt" ${eksiPasif}>−</button>
         <span class="gelmedigim">Gelmediğim: ${ders.gelmedigim} / ${ders.hak}</span>
-        <button class="kucuk-buton" type="button" onclick="artir(${i})" aria-label="Bir hafta artır">+</button>
+        <button class="kucuk-buton" onclick="artir(${i})" aria-label="Bir hafta artır">+</button>
       </div>
-      <button class="sil-buton" type="button" onclick="sil(${i})">Sil</button>
+      <button class="sil-buton" onclick="sil(${i})">Sil</button>
     </div>
   `;
 
@@ -145,8 +138,7 @@ function listeyiGoster() {
   liste.innerHTML = "";
 
   for (let i = 0; i < dersler.length; i++) {
-    const kart = kartOlustur(i);
-    liste.appendChild(kart);
+    liste.appendChild(kartOlustur(i));
   }
 
   // Hiç ders yoksa "Henüz ders eklemedin" yazısı görünür.

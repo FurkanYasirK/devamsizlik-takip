@@ -8,13 +8,6 @@
   --ikincil: #6F6E6A;
   --koyu: #111111;
 
-  --yesil-zemin: #EDF3EC;
-  --yesil-yazi: #346538;
-  --sari-zemin: #FBF3DB;
-  --sari-yazi: #956400;
-  --kirmizi-zemin: #FDEBEC;
-  --kirmizi-yazi: #9F2F2D;
-
   --govde-font: "Geist", "Helvetica Neue", "Segoe UI", sans-serif;
   --baslik-font: "Newsreader", Georgia, serif;
 }
@@ -109,8 +102,6 @@ h2 {
   text-align: center;
 }
 
-.bos-mesaj[hidden] { display: none; }
-
 .ders-listesi {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
@@ -156,18 +147,18 @@ h2 {
 }
 
 .yesil {
-  --durum-zemin: var(--yesil-zemin);
-  --durum-yazi: var(--yesil-yazi);
+  --durum-zemin: #EDF3EC;
+  --durum-yazi: #346538;
 }
 
 .sari {
-  --durum-zemin: var(--sari-zemin);
-  --durum-yazi: var(--sari-yazi);
+  --durum-zemin: #FBF3DB;
+  --durum-yazi: #956400;
 }
 
 .kirmizi {
-  --durum-zemin: var(--kirmizi-zemin);
-  --durum-yazi: var(--kirmizi-yazi);
+  --durum-zemin: #FDEBEC;
+  --durum-yazi: #9F2F2D;
 }
 
 .kalan {
@@ -208,7 +199,6 @@ h2 {
   min-width: 112px;
   color: var(--ikincil);
   font-size: 0.875rem;
-  font-variant-numeric: tabular-nums;
   text-align: center;
 }
 
@@ -238,7 +228,7 @@ h2 {
   cursor: pointer;
 }
 
-.sil-buton:hover { color: var(--kirmizi-yazi); }
+.sil-buton:hover { color: #9F2F2D; }
 
 button:active { transform: scale(0.98); }
 
@@ -262,7 +252,6 @@ input:focus-visible {
 
 /* Telefonda form alt alta dizilir */
 @media (max-width: 560px) {
-  .sayfa { padding-top: 48px; }
   .form { grid-template-columns: 1fr 1fr; }
   .form .alan:first-child { grid-column: 1 / -1; }
 }
