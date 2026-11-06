@@ -43,8 +43,24 @@
 
 **Benim Eylemim:** Siteyi kendim denedim. HTML ve CSS'te anlamadığım yer yoktu ama app.js'yi anlamakta zorlandım, bu yüzden AI'dan daha düşük seviyede ve farklı bir şekilde yazmasını istedim. AI app.js'yi for döngüsü, if-else ve düz fonksiyonlarla yeniden yazdı, kart HTML'ini de index.html'den app.js'ye taşıdı. Sonra kodda fazla yazılmış yerlerin silinmesini istedim, AI gereksiz satırları sildi ve testi tekrarladı.
 
-**Ne Öğrendim:** (doldurulacak)
+**Ne Öğrendim:** Bir kodu anlamadığımda AI'dan daha basit yazmasını isteyebileceğimi öğrendim. Uygulamadaki veriler `dersler` listesinde duruyor. Liste her değiştiğinde `kaydetVeGoster` fonksiyonu veriyi kaydediyor ve kartları baştan çiziyor. localStorage sadece yazı sakladığı için liste kaydedilirken `JSON.stringify`, okunurken `JSON.parse` kullanılıyor. Kalan hak `hak - gelmedigim` işlemiyle bulunuyor, kartın rengi de bu sonuca göre `if-else` ile seçiliyor. `for`, `if-else` ve fonksiyon yapıları C#'takine benziyor.
 
 **Sonraki Adım:** Açık issue'lardan birini seçip geliştirmek.
+
+---
+
+## Tarih: 06.11.2026
+
+**Amaç:** Repodaki .gitignore dosyasının ne işe yaradığını anlamak ve gerekip gerekmediğine karar vermek.
+
+**AI'a Sorduğum:** "GitHub'da repoda duran .gitignore ne işe yarıyor?" diye sordum.
+
+**AI Önerisi:** .gitignore'un Git'e hangi dosya ve klasörleri takip etmemesini söylediğini açıkladı. Bizim dosyamızda sadece geliştirme araçlarının geçici klasörlerinin yazdığını, bunların sitenin çalışmasıyla ilgisi olmadığını gösterdi.
+
+**Benim Eylemim:** Dosyayı kaldırmaya karar verdim, AI da repodan sildi.
+
+**Ne Öğrendim:** .gitignore, Git'in takip etmeyeceği dosyaları belirler. Sitenin çalışması için gerekli değildir ama olmadığında geçici dosyalar yanlışlıkla commit'e girebilir, bu yüzden dosyaları tek tek eklemek gerekir.
+
+**Sonraki Adım:** Şu an yeni bir geliştirme planlamıyorum, açık issue'lar ileride ele alınacak.
 
 ---
